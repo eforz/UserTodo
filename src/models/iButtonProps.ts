@@ -1,5 +1,6 @@
-import { ReactNode } from "react";
+import { ReactChild, ReactNode } from "react";
 
 export interface iButtonProps {
-    children?: ReactNode;
+    children?: ReactNode | ReactChild;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }

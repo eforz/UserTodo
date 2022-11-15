@@ -1,6 +1,5 @@
 export interface iUser {
-    id: string;
+    id?: string | number;
     name: string;
     password: string;
-    isAuth: boolean;
 }

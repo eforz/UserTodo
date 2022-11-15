@@ -20,9 +20,9 @@ const StyledButton = styled.button`
     }
 `
 
-const Button: FC<iButtonProps> = ({children}) => {
+const Button: FC<iButtonProps> = (props) => {
   return (
-    <StyledButton>{children}</StyledButton>
+    <StyledButton type="button" {...props}>{props.children}</StyledButton>
   )
 }
 

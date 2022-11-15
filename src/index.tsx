@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import {BrowserRouter as Router} from "react-router-dom";
 import { createGlobalStyle, ThemeProvider} from 'styled-components';
+import { Provider } from 'react-redux';
+import { setupStore } from './store/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const store = setupStore()
 
 const Global = createGlobalStyle`
 *{
@@ -33,13 +37,13 @@ const theme = {
 }
 
 root.render(
-
+  <Provider store={store}>
     <Router>
       <ThemeProvider theme={theme}>
         <App/>
         <Global/>
       </ThemeProvider>
     </Router>
-
+  </Provider>
 );
 

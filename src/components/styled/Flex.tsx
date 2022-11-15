@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components';
+import { iTodo } from './../../models/iTodo';
 
 interface StyledFlexProps {
     direction?: string;
@@ -9,6 +10,7 @@ interface StyledFlexProps {
     children?:  React.ReactChild | React.ReactNode;
     widthProps?: string;
     heightProps?: string;
+    todo?: iTodo;
 }
 
 const StyledFlex = styled.div<StyledFlexProps>`
@@ -23,7 +25,7 @@ const StyledFlex = styled.div<StyledFlexProps>`
 `
 
 const Flex: FC<StyledFlexProps> = (props) => {
-  return <StyledFlex {...props}/>
+  return <StyledFlex {...props}>{props.children}</StyledFlex>
 }
 
 export default Flex
