@@ -17,7 +17,13 @@
     {
       "id": 1,
       "name": "Admin",
-      "password": "Admin"
+      "password": "Admin",
+      "todos": [
+        {
+          "id": 1,
+          "title": "Milk"
+        }
+      ]
     }
   ]
 }

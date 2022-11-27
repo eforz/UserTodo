@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState, useMemo} from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Button from './Button'
@@ -41,12 +41,15 @@ const Form: FC<iFormProps> = (props) => {
       return user.name === login && user.password === pass 
     })
     console.log(findUser)
-    if (findUser.length > 0) {
-      return true
+    const isFind = () => {
+      if (findUser.length > 0) {
+        return true
+      }
+      return false;
     }
-    return false;
+    return isFind()
   }
-  
+
   const newUser:iUser = {
     id: performance.now(),
     name: login,
@@ -56,6 +59,7 @@ const Form: FC<iFormProps> = (props) => {
   const postUser = async () => {
     await axios.post('http://localhost:5000/users', newUser)
     dispatch(fetchUsers())
+    findUser()
   }
 
   return (
@@ -67,7 +71,9 @@ const Form: FC<iFormProps> = (props) => {
           <Input type="text" placeholder="Username" onChange={loginChangeHandler}/>
           <Input type="password" placeholder="Password" onChange={passChangeHandler}/>
           <Flex>
-            <Button onClick={findUser}>{findUser() === true? <Link to='/todo'>Login</Link> : <Link to='/'>Login</Link>}</Button>
+            <Button onClick={findUser}>
+                  {findUser() === true? <Link to='/todo'>Login</Link> : <Link to='/'>Login</Link>}
+            </Button>
             <Button onClick={postUser}>register</Button>
           </Flex>
         </Flex>
@@ -77,3 +83,4 @@ const Form: FC<iFormProps> = (props) => {
 }
 
 export default Form
+

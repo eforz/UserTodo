@@ -45,5 +45,5 @@ root.render(
       </ThemeProvider>
     </Router>
   </Provider>
-);
+); 
 
